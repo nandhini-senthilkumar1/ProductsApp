@@ -48,7 +48,8 @@ const products=[
   "productImage": "Product_6.jpeg",
   "productName": "Bernadino Spumante Bottle",
   "type": "Wine"
-  },
+  }
+  ,
   {
   "index": 6,
   "isSale": true,
@@ -69,9 +70,28 @@ const products=[
 function App() {
   const [filter, setFilter] = useState("All");
   const filterOptions = ["All", "Beer", "Wine","Spirits","Cider"];
-  const filteredProducts = filter === "All" ? products : products.filter((p) => p.type === filter);
+  const filteredProducts = filter === "All" ? products : products.filter((p) => p.type === filter);git 
   return (
-    <h1>Products</h1>
+    <div>
+      <div>
+        Filter:
+        {filterOptions.map((option) => (
+          <button key={option} onClick={() => setFilter(option)}>
+            {option}
+          </button>
+        ))}
+      </div>
+      <div>
+        {filteredProducts.map((product) => (
+          <div key={product.id}>
+            <img src></img>
+            <h2>{product.name}</h2>
+            <p>{product.price}</p>
+            <p>{product.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
 
